@@ -1,6 +1,6 @@
 name: SinglePlayerSleep
 main: io.github.toydotgame.SinglePlayerSleep.Main
-version: 1.0
+version: 1.1
 description: Allows players to sleep to the next morning even if other players do not go to bed.
 author: toydotgame
 prefix: SinglePlayerSleep
