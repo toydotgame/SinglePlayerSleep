@@ -8,19 +8,19 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 
-public class SPS implements Listener {
+public class SinglePlayerSleep implements Listener {
 	@EventHandler
-	public void onPlayerSleep(PlayerBedEnterEvent bedEnterEvent){
+	public void onPlayerSleep(PlayerBedEnterEvent bedEnterEvent) {
 		Thread sleepThread = new Thread() {
 			public void run() {
 				Player player = bedEnterEvent.getPlayer();
 				String playerNameString = player.getName();
 				try {
-					Thread.sleep(5050);
-				} catch (InterruptedException e) {} // try/catch loops pain me...
-				World world = Bukkit.getWorld(player.getLocation().getWorld().getName());
+					Thread.sleep(5050); // Singleplayer Minecraft has a 5.05 second delay animation before the time skips to day.
+				} catch (InterruptedException e) {}
+				World world = Bukkit.getWorld(player.getWorld().getName());
 				world.setTime(0);
-				Bukkit.broadcastMessage(playerNameString + ChatColor.YELLOW + " slept.");
+				Bukkit.broadcastMessage(playerNameString + ChatColor.YELLOW + " went to bed. Sweet Dreams");
 			}
 		};
 		sleepThread.start();
