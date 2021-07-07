@@ -18,10 +18,12 @@ public class SinglePlayerSleep implements Listener {
 				try {
 					Thread.sleep(5050); // Singleplayer Minecraft has a 5.05 second delay animation before the time skips to day.
 				} catch (InterruptedException e) {}
-				World world = Bukkit.getWorld(player.getWorld().getName());
-				world.setStorm(false);
-				world.setTime(0);
-				Bukkit.broadcastMessage(playerNameString + ChatColor.YELLOW + " went to bed. Sweet Dreams");
+				if(player.isSleeping()) { // Checks to make sure the player is still online and in bed.
+					World world = Bukkit.getWorld(player.getWorld().getName());
+					world.setStorm(false);
+					world.setTime(0);
+					Bukkit.broadcastMessage(playerNameString + ChatColor.YELLOW + " went to bed. Sweet Dreams");
+				}
 			}
 		};
 		sleepThread.start();
