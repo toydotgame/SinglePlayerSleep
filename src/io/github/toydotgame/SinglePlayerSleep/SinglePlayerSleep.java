@@ -9,6 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 
 public class SinglePlayerSleep implements Listener {
+	
+	// TODO: Only execute `sleepThread.start()` if the player count is > 1.
 	@EventHandler
 	public void onPlayerSleep(PlayerBedEnterEvent bedEnterEvent) {
 		Thread sleepThread = new Thread() {
